@@ -12,6 +12,7 @@ public class ChatBot {
 	/**
 	 * This is the main method which makes use an instance of HomeFrame.
 	 * 
+	 * 
 	 * @param args Unused.
 	 * @return Nothing.
 	 */
