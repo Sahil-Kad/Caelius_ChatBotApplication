@@ -39,21 +39,6 @@ This project is a Chatbot application with a user-friendly interface created usi
 
     - Launch the application and start interacting with the chatbot through the user interface.
 
-## Contributors
-
-- [Your Name](https://github.com/your-username)
-- [Contributor 1](https://github.com/contributor1)
-- [Contributor 2](https://github.com/contributor2)
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- Special thanks to [OpenAI](https://openai.com/) for providing the GPT-based Chatbot model for reference.
-- Inspired by [ChatGPT](https://github.com/openai/chatgpt) project.
-
 Feel free to modify and enhance this project! If you encounter any issues or have suggestions, please open an issue or submit a pull request. Happy coding!
 
 
