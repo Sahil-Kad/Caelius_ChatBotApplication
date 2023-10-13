@@ -4,7 +4,6 @@ package com.caeliusconsulting.chatbot.db;
  * Following are all the imports
  */
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,17 +50,20 @@ public class ChatBotDB {
 	
 	public static String queryDatabase(String input) {
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT Answer FROM ChatQuestions WHERE Question=?");
-            preparedStatement.setString(1, input);
-            ResultSet result = preparedStatement.executeQuery();
+            PreparedStatement preparedStatementSelect = conn.prepareStatement("SELECT Answer FROM ChatQuestions WHERE Question=?");
+            preparedStatementSelect.setString(1, input);
+            ResultSet result = preparedStatementSelect.executeQuery();
 
             if (result.next()) {
                 return result.getString("Answer");
             } else {
             	try {
-                    URL url = new URL("https://google.com/search?q=" + input.replace(" ", "+"));
-                    java.awt.Desktop.getDesktop().browse(url.toURI());
-                    return "Maybe this will answer your question.";
+            		String answer = ChatGPT.openAI(input);
+            		PreparedStatement preparedStatementInsert = conn.prepareStatement("INSERT INTO ChatQuestions (Question,Answer) VALUES (?,?)");
+            		preparedStatementInsert.setString(1, input);
+            		preparedStatementInsert.setString(2, answer);
+            		preparedStatementInsert.executeUpdate();
+            		return answer;
                 } catch (Exception e) {
                     return "Please connect to the internet for results.";
                 }
